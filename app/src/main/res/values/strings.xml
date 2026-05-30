@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HYPER</string>
+    <string name="login">Войти</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="username">Имя пользователя</string>
+    <string name="chats">Чаты</string>
+    <string name="friends">Друзья</string>
+    <string name="profile">Профиль</string>
+    <string name="search">Поиск…</string>
+    <string name="send">Отправить</string>
+    <string name="type_message">Написать сообщение…</string>
+    <string name="no_chats">Нет чатов. Добавьте друзей!</string>
+    <string name="no_friends">Нет друзей пока</string>
+    <string name="add_friend">Добавить друга</string>
+    <string name="accept">Принять</string>
+    <string name="reject">Отклонить</string>
+    <string name="logout">Выйти</string>
+    <string name="scan_qr">Войти по QR-коду</string>
+    <string name="qr_hint">Откройте сайт HYPER на ПК, перейдите в Вход и отсканируйте QR-код</string>
+    <string name="verify_code">Код подтверждения</string>
+    <string name="code_sent">Код отправлен на почту</string>
+    <string name="loading">Загрузка…</string>
+    <string name="error_network">Ошибка сети. Проверьте интернет.</string>
+    <string name="you">Вы</string>
+    <string name="online">онлайн</string>
+    <string name="offline">не в сети</string>
+    <string name="typing">печатает…</string>
+    <string name="settings">Настройки</string>
+    <string name="two_fa">Двухфакторная аутентификация</string>
+    <string name="server_url">https://hyper-messenger.ru</string>
+</resources>

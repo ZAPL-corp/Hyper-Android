@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="hyper_bg">#04060A</color>
+    <color name="hyper_surface">#0D1117</color>
+    <color name="hyper_elevated">#161B23</color>
+    <color name="hyper_border">#21262D</color>
+    <color name="hyper_accent">#00C8D4</color>
+    <color name="hyper_accent_dim">#00c8d41A</color>
+    <color name="hyper_accent_dark">#0099A8</color>
+    <color name="hyper_text_primary">#F0F2F5</color>
+    <color name="hyper_text_secondary">#8B949E</color>
+    <color name="hyper_text_muted">#525866</color>
+    <color name="hyper_red">#FF4D4D</color>
+    <color name="hyper_green">#23A55A</color>
+    <color name="hyper_purple">#8B5CF6</color>
+    <color name="hyper_gold">#F59E0B</color>
+    <color name="hyper_bubble_out">#0D2A2C</color>
+    <color name="hyper_bubble_in">#161B23</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
