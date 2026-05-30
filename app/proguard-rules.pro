@@ -1,0 +1,7 @@
+-keep class ru.hyper.messenger.models.** { *; }
+-keep class io.socket.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn okhttp3.**
+-dontwarn retrofit2.**
+-dontwarn io.socket.**
