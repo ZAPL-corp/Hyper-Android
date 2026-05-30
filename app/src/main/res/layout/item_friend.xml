@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="70dp"
+    android:gravity="center_vertical" android:paddingHorizontal="16dp"
+    android:background="?attr/selectableItemBackground">
+    <FrameLayout android:layout_width="46dp" android:layout_height="46dp" android:layout_marginEnd="14dp">
+        <TextView android:id="@+id/tvAvatarLetter"
+            android:layout_width="46dp" android:layout_height="46dp"
+            android:background="@drawable/bg_avatar" android:gravity="center"
+            android:textColor="@color/hyper_bg" android:textSize="17sp" android:textStyle="bold"/>
+    </FrameLayout>
+    <TextView android:id="@+id/tvUsername"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:textColor="@color/hyper_text_primary"
+        android:textSize="16sp" android:textStyle="bold" android:maxLines="1" android:ellipsize="end"/>
+    <LinearLayout android:id="@+id/actionButtons"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:visibility="gone" android:gap="8dp">
+        <Button android:id="@+id/btnAccept"
+            android:layout_width="76dp" android:layout_height="34dp"
+            android:text="Принять" android:textSize="12sp"
+            android:background="@drawable/bg_button_accent"
+            android:textColor="@color/hyper_bg" android:textStyle="bold"/>
+        <Button android:id="@+id/btnReject"
+            android:layout_width="76dp" android:layout_height="34dp"
+            android:text="Отклонить" android:textSize="11sp"
+            android:backgroundTint="@color/hyper_elevated"
+            android:textColor="@color/hyper_red"/>
+    </LinearLayout>
+    <ImageView android:id="@+id/ivMessage" android:layout_width="36dp"
+        android:layout_height="36dp" android:src="@drawable/ic_chats"
+        android:padding="6dp" android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Написать"/>
+</LinearLayout>
