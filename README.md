@@ -1,7 +1,19 @@
 # Hyper-Android
 
-## Что такое Hyper Androi?
+## Что такое Hyper Android?
 Hyper Android - это открытый исходный код apk приложения мессенджера под смартфоны, для просмотра и предложения изменений.
+
+## Редактирование
+Редактировать мессенджер можно в соотвествии с лицензией MiT / Apache официальной редакцией считается только редакция выпущенная ZAPL corporation!
+Для редактирования мессенджера выгрузите ветку ``main``
+```
+git clone https://github.com/ZAPL-corp/Hyper-Android/tree/main
+```
+После чего отредактируйте исходные файлы под себя.
+
+## Информация
+[/releases](https://github.com/ZAPL-corp/Hyper-Android/releases) - репозитрия используется для публикования обновлений apk приложений
+[/tree/main](https://github.com/ZAPL-corp/Hyper-Android/tree/main) - репозитория исползуется для публиткования обновлённого исходного кода .apk приложения
 
 ## 🌐 Соцальность
 [![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white)](https://tiktok.com/@hypermessenger) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:hypermessenger@bk.ru) 
