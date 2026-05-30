@@ -13,6 +13,7 @@ git clone https://github.com/ZAPL-corp/Hyper-Android/tree/main
 
 ## Информация
 [/releases](https://github.com/ZAPL-corp/Hyper-Android/releases) - репозитрия используется для публикования обновлений apk приложений
+
 [/tree/main](https://github.com/ZAPL-corp/Hyper-Android/tree/main) - репозитория исползуется для публиткования обновлённого исходного кода .apk приложения
 
 ## 🌐 Соцальность
