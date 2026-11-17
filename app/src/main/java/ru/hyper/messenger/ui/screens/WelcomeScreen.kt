@@ -119,7 +119,7 @@ fun WelcomeScreen(
                 )
                 Spacer(Modifier.weight(1f))
                 Text(
-                    text = "CONCEPT",
+                    text = stringResource(R.string.welcome_badge),
                     color = Color.White.copy(alpha = 0.55f),
                     fontSize = 10.sp,
                     fontWeight = FontWeight.SemiBold,

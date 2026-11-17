@@ -6,4 +6,5 @@ data class Message(
     val time: String,
     val isMine: Boolean = false,
     val sender: String? = null,
+    val pending: Boolean = false,
 )

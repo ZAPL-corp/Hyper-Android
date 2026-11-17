@@ -3,147 +3,190 @@
     <string name="app_name">HYPER</string>
     <string name="brand_name">HYPER</string>
     <string name="brand_tagline">Быстрый, безопасный и по-настоящему ваш мессенджер.</string>
-    <string name="concept_version">HYPER 1.0 · concept</string>
 
-    <!-- Common -->
     <string name="back">Назад</string>
     <string name="close">Закрыть</string>
     <string name="cancel">Отмена</string>
-    <string name="retry">Повторить</string>
     <string name="done">Готово</string>
-    <string name="save">Сохранить</string>
-    <string name="more">Ещё</string>
-    <string name="search">Поиск</string>
-    <string name="online">в сети</string>
-    <string name="demo_mode">Демо</string>
-    <string name="soon">Скоро</string>
     <string name="today">Сегодня</string>
-    <string name="yesterday">Вчера</string>
+    <string name="open_settings">Открыть настройки</string>
 
-    <!-- Welcome -->
     <string name="welcome_title">Добро пожаловать в HYPER!</string>
     <string name="welcome_subtitle">Общение без лишнего шума. Быстрое, безопасное и красивое.</string>
     <string name="welcome_login">Войти</string>
     <string name="welcome_register">Создать аккаунт</string>
-    <string name="welcome_footer">Демонстрационный интерфейс · сервер подключается отдельно</string>
+    <string name="welcome_footer">Версия 1.1.0 concept 5 - Android 11 и выше</string>
+    <string name="welcome_badge">v1.1.0 concept 5</string>
 
-    <!-- Login -->
     <string name="login_headline">С возвращением</string>
-    <string name="login_subtitle">Войдите, чтобы продолжить общение в HYPER</string>
-    <string name="login_email_label">Почта или логин</string>
+    <string name="login_native_subtitle">Войдите по почте и паролю. Пароль проверяется на сервере HYPER.</string>
+    <string name="login_email_label">Почта или @username</string>
     <string name="login_password_label">Пароль</string>
     <string name="login_button">Войти</string>
-    <string name="login_loading">Входим…</string>
     <string name="login_no_account">Нет аккаунта?</string>
     <string name="login_register">Зарегистрироваться</string>
-    <string name="login_demo_title">Демо-доступ</string>
-    <string name="login_demo_credentials">test@hyper.ru · despatch</string>
-    <string name="login_demo_button">Войти в демо</string>
-    <string name="login_demo_note">Без сервера и 2FA. Все данные хранятся только на устройстве.</string>
-    <string name="login_error_empty_login">Введите почту или логин</string>
-    <string name="login_error_invalid">Не удалось распознать логин. Проверьте данные.</string>
-    <string name="login_error_empty_password">Введите пароль</string>
-    <string name="login_error_demo_password">Для демо-аккаунта используется пароль despatch</string>
     <string name="login_show_password">Показать пароль</string>
     <string name="login_hide_password">Скрыть пароль</string>
-    <string name="login_remember_me">Запомнить меня</string>
 
-    <!-- Two-factor authentication -->
-    <string name="twofa_title">Двухфакторная защита</string>
+    <string name="register_headline">Создать аккаунт</string>
+    <string name="register_subtitle">Регистрация на сервере HYPER. На почту придет код подтверждения.</string>
+    <string name="register_password_hint">Минимум 6 символов</string>
+    <string name="register_consent">Мне 18+, я принимаю правила сервиса и согласие на обработку данных</string>
+    <string name="register_button">Зарегистрироваться</string>
+
+    <string name="email_code_title">Код из письма</string>
+    <string name="email_code_subtitle">Мы отправили 6-значный код на %1$s. Он действует 10 минут. Если письма нет, проверьте папку Спам.</string>
     <string name="twofa_headline">Подтверждение входа</string>
-    <string name="twofa_subtitle">Введите 6-значный код из приложения-аутентификатора для аккаунта\n%1$s</string>
-    <string name="twofa_label">Код подтверждения</string>
-    <string name="twofa_verify">Подтвердить</string>
-    <string name="twofa_loading">Проверяем…</string>
-    <string name="twofa_resend">Отправить код повторно</string>
-    <string name="twofa_resent">Код отправлен повторно · демо</string>
-    <string name="twofa_demo_hint">Демо-режим: универсальный код 123456</string>
-    <string name="twofa_error_invalid">Неверный код. Проверьте цифры и попробуйте снова.</string>
-    <string name="twofa_error_empty">Введите 6 цифр кода</string>
-    <string name="twofa_security_note">Никогда не сообщайте код никому. Сотрудники HYPER не спрашивают его.</string>
+    <string name="twofa_native_subtitle">Введите 6-значный код из приложения-аутентификатора.</string>
+    <string name="code_label">Код подтверждения</string>
+    <string name="code_hint">Android подставит код из уведомления автоматически</string>
+    <string name="code_submit">Продолжить</string>
+    <string name="code_resend">Отправить код еще раз</string>
 
-    <!-- Web pages -->
-    <string name="web_register_title">Регистрация</string>
-    <string name="web_settings_title">Настройки на сайте</string>
-    <string name="web_login_title">Вход по QR-коду</string>
-    <string name="web_loading">Загрузка…</string>
-    <string name="web_error_title">Страница недоступна</string>
-    <string name="web_error_desc">Не удалось загрузить страницу. Проверьте интернет-соединение — сайт станет доступен после запуска сервиса.</string>
-    <string name="web_retry">Повторить</string>
-    <string name="web_open_browser">Открыть в браузере</string>
-    <string name="web_secure_connection">Защищённое соединение</string>
-    <string name="web_demo_banner">В концепте сайт может быть ещё не запущен — это ожидаемо.</string>
+    <string name="captcha_title">Проверка безопасности</string>
+    <string name="captcha_subtitle">Пройдите проверку Cloudflare. Логин и пароль вводятся в приложении, здесь только капча.</string>
+    <string name="captcha_wait">Ожидаем подтверждение...</string>
 
-    <!-- Chats -->
     <string name="tab_chats">Чаты</string>
     <string name="tab_settings">Настройки</string>
     <string name="tab_profile">Профиль</string>
+
+    <string name="accounts_title">Аккаунты</string>
+    <string name="accounts_subtitle">До трех аккаунтов на устройстве. Удерживайте Профиль, чтобы переключиться.</string>
+    <string name="accounts_add">Добавить аккаунт</string>
+    <string name="accounts_add_hint">Войти или зарегистрировать еще один</string>
+    <string name="accounts_limit">Достигнут лимит: три аккаунта</string>
+    <string name="accounts_remove">Удалить</string>
+
     <string name="chats_title">Чаты</string>
     <string name="chats_subtitle">Ваши разговоры в одном месте</string>
-    <string name="chats_search_hint">Поиск чатов</string>
-    <string name="chat_filter_all">Все</string>
-    <string name="chat_filter_unread">Непрочитанные</string>
-    <string name="chat_filter_personal">Личные</string>
-    <string name="chat_filter_groups">Группы</string>
-    <string name="chats_section_pinned">Закреплённые</string>
+    <string name="chats_search_hint">Поиск чатов или @username</string>
+    <string name="chats_section_pinned">Закрепленные</string>
     <string name="chats_section_all">Все чаты</string>
     <string name="chats_empty_title">Ничего не найдено</string>
-    <string name="chats_empty_desc">Попробуйте изменить запрос или выбрать другой фильтр.</string>
+    <string name="chats_empty_desc">Попробуйте изменить поисковый запрос.</string>
+    <string name="chats_waiting">Ожидание сети...</string>
+    <string name="chats_syncing">Обновляем...</string>
+    <string name="chats_no_friends">Список друзей пуст. Добавьте друзей в веб-кабинете HYPER.</string>
+    <string name="search_global">Глобальный поиск</string>
     <string name="new_chat">Новый чат</string>
     <string name="new_chat_title">Начать чат</string>
-    <string name="new_chat_desc">Выберите контакт из демо-списка</string>
+    <string name="new_chat_desc">Выберите контакт или создайте группу</string>
     <string name="new_chat_group">Новая группа</string>
-    <string name="new_chat_group_desc">Создание групп появится после подключения сервера</string>
-    <string name="chat_online">в сети</string>
-    <string name="chat_last_seen_recently">был(а) недавно</string>
+    <string name="new_chat_group_desc">Соберите участников и начните общение</string>
+    <string name="chat_action_pin">Закрепить чат</string>
+    <string name="chat_action_unpin">Открепить чат</string>
+    <string name="chat_action_mark_read">Отметить прочитанным</string>
+    <string name="chat_action_mark_unread">Отметить непрочитанным</string>
     <string name="chat_group_label">Групповой чат</string>
-    <string name="chat_channel_label">Канал</string>
-    <string name="chat_not_found">Чат не найден</string>
-    <string name="demo_feature_soon">Демо-режим: функция появится после подключения сервера</string>
+    <string name="chat_online">в сети</string>
     <string name="chat_input_hint">Сообщение</string>
     <string name="chat_send">Отправить</string>
     <string name="chat_attach">Прикрепить файл</string>
-    <string name="chat_voice">Голосовое сообщение</string>
-    <string name="chat_more">Ещё</string>
-    <string name="chat_call">Позвонить</string>
-    <string name="chat_video_call">Видеозвонок</string>
-    <string name="chat_demo_notice">Демо-диалог · история хранится только на устройстве</string>
     <string name="chat_start">Начало диалога</string>
+    <string name="chat_not_found">Чат не найден</string>
     <string name="message_read">Прочитано</string>
-    <string name="typing">печатает…</string>
+    <string name="message_action_copy">Копировать</string>
+    <string name="message_action_delete">Удалить</string>
+    <string name="message_copied">Сообщение скопировано</string>
+    <string name="message_deleted">Сообщение удалено</string>
 
-    <!-- Settings -->
+    <string name="group_create_title">Новая группа</string>
+    <string name="group_name_label">Название группы</string>
+    <string name="group_name_hint">Например: Команда HYPER</string>
+    <string name="group_members_label">Участники</string>
+    <string name="group_create">Создать группу</string>
+    <string name="group_name_required">Введите название группы</string>
+    <string name="group_system_created">Вы создали группу %1$s</string>
+    <string name="group_create_error">Не удалось создать группу. Проверьте связь с сервером.</string>
+
+    <string name="attach_title">Отправить</string>
+    <string name="attach_gallery">Галерея</string>
+    <string name="attach_gallery_desc">Фото и видео с камеры и галереи</string>
+    <string name="attach_files">Файлы</string>
+    <string name="attach_files_desc">Документы, архивы и другие файлы</string>
+
+    <string name="profile_title">Профиль</string>
+    <string name="profile_status_default">На связи в HYPER</string>
+    <string name="profile_edit">Редактировать профиль</string>
+    <string name="profile_account">Данные аккаунта</string>
+    <string name="profile_email">Эл. почта</string>
+    <string name="profile_username">Имя пользователя</string>
+    <string name="profile_actions">Аккаунт</string>
+    <string name="profile_action_themes">Оформление</string>
+    <string name="profile_action_themes_desc">Темы, акценты и динамический цвет</string>
+    <string name="profile_action_security">Безопасность</string>
+    <string name="profile_action_security_desc">Коды 2FA и защита входа</string>
+    <string name="profile_accounts">Аккаунты</string>
+    <string name="profile_accounts_value">%1$d из 3</string>
+    <string name="profile_logout">Выйти</string>
+    <string name="logout_title">Выйти из аккаунта?</string>
+    <string name="logout_message">Вы вернетесь на экран приветствия. Аккаунт останется на устройстве, локальная история чатов сохранится.</string>
+    <string name="logout_confirm">Выйти</string>
+    <string name="edit_profile_title">Редактировать профиль</string>
+    <string name="edit_profile_headline">Как вас будут видеть</string>
+    <string name="edit_profile_username">Имя пользователя</string>
+    <string name="edit_profile_username_hint">Латиница, цифры, точка и подчеркивание</string>
+    <string name="edit_profile_email_readonly">Почту можно изменить в настройках на сайте</string>
+    <string name="edit_profile_save">Сохранить изменения</string>
+    <string name="edit_profile_photo">Сменить фото</string>
+
     <string name="settings_title">Настройки</string>
     <string name="settings_subtitle">Сделайте HYPER удобным для себя</string>
-    <string name="settings_demo_badge">Демо-аккаунт</string>
     <string name="settings_section_appearance">Оформление</string>
     <string name="settings_themes">Темы</string>
-    <string name="settings_themes_desc">Тёмная тема, акценты и Material You</string>
+    <string name="settings_themes_desc">Темная тема, акценты и Material You</string>
     <string name="settings_notifications">Уведомления</string>
     <string name="settings_notifications_desc">Звуки, вибрация и превью сообщений</string>
     <string name="settings_privacy">Приватность</string>
     <string name="settings_privacy_desc">Прочтение, статус и видимость</string>
     <string name="settings_section_security">Безопасность</string>
-    <string name="settings_qr">Авторизация по QR-коду</string>
-    <string name="settings_qr_desc">Быстрый вход на web.hyper-messenger.ru</string>
+    <string name="settings_security">Двухфакторная защита</string>
+    <string name="settings_security_desc">Коды 2FA и защита входа</string>
     <string name="settings_section_account">Аккаунт</string>
-    <string name="settings_web">Настройки на сайте</string>
+    <string name="settings_server">Сервер</string>
+    <string name="settings_server_desc">Адрес, к которому подключается приложение</string>
+    <string name="settings_web">Веб-кабинет</string>
     <string name="settings_web_desc">Откроется внутри приложения</string>
-    <string name="settings_devices">Активные устройства</string>
-    <string name="settings_devices_value">1 · это устройство</string>
     <string name="settings_section_about">О приложении</string>
-    <string name="settings_version">Версия</string>
     <string name="settings_about">О HYPER</string>
     <string name="settings_about_desc">Идея, дизайн и команда</string>
+    <string name="settings_version">Версия</string>
+    <string name="settings_min_android">Минимальная версия Android</string>
+    <string name="settings_min_android_value">11 (API 30)</string>
     <string name="settings_logout">Выйти из аккаунта</string>
-    <string name="logout_title">Выйти из аккаунта?</string>
-    <string name="logout_message">Вы вернётесь на экран приветствия. Локальная демо-история останется на устройстве.</string>
-    <string name="logout_confirm">Выйти</string>
+    <string name="settings_made_with">Сделано командой HYPER - 2026</string>
     <string name="settings_about_dialog_title">HYPER</string>
-    <string name="settings_about_dialog_body">Мессенджер нового поколения: быстрый, безопасный и сделанный с вниманием к деталям.\n\nЭто концепт-интерфейс на Jetpack Compose и Material You 3. Серверная часть будет подключена следующим этапом.</string>
-    <string name="settings_made_with">Сделано командой HYPER · 2026</string>
+    <string name="settings_about_dialog_body">Мессенджер нового поколения: быстрый, безопасный и сделанный с вниманием к деталям.\n\nСборка 1.1.0 concept 5 на Jetpack Compose и Material You 3. Поддерживается Android 11 и выше. Приложение подключено к серверам web.hyper-messenger.ru и android.hyper-messenger.ru: вход, профиль, друзья и группы загружаются с сервера, сообщения идут через Socket.IO.</string>
+    <string name="server_dialog_title">Сервер HYPER</string>
+    <string name="server_dialog_body">Оба адреса обслуживают одни и те же API. Android-шлюз используется по умолчанию.</string>
+    <string name="notifications_permission_title">Разрешение на уведомления</string>
+    <string name="notifications_permission_denied">Уведомления выключены в системе. Включите их в настройках Android.</string>
 
-    <!-- Notifications settings -->
+    <string name="security_title">Безопасность</string>
+    <string name="security_subtitle">Защитите вход в аккаунт одноразовыми кодами</string>
+    <string name="security_twofa">Двухфакторная защита</string>
+    <string name="security_twofa_desc">При входе потребуется 6-значный код</string>
+    <string name="security_enabled">Включена</string>
+    <string name="security_enable">Включить 2FA</string>
+    <string name="security_disable">Выключить 2FA</string>
+    <string name="security_setup_title">Подключение 2FA</string>
+    <string name="security_setup_body">Добавьте ключ в приложение-аутентификатор, затем введите текущий 6-значный код.</string>
+    <string name="security_secret_label">Ключ для аутентификатора</string>
+    <string name="security_code_label">Код из аутентификатора</string>
+    <string name="security_disable_title">Отключить 2FA?</string>
+    <string name="security_disable_body">Подтвердите действие текущим кодом из аутентификатора.</string>
+    <string name="security_confirm">Подтвердить</string>
+    <string name="security_server_note">2FA хранится на сервере HYPER. Код из приложения-аутентификатора потребуется при входе.</string>
+
+    <string name="web_settings_title">Веб-кабинет</string>
+    <string name="web_secure_connection">Защищенное соединение</string>
+    <string name="web_error_title">Страница недоступна</string>
+    <string name="web_error_desc">Не удалось загрузить страницу. Проверьте интернет-соединение.</string>
+    <string name="web_retry">Повторить</string>
+    <string name="web_open_browser">Открыть в браузере</string>
+    <string name="web_demo_banner">Сервер указан в настройках приложения.</string>
+
     <string name="notifications_title">Уведомления</string>
     <string name="notifications_subtitle">Выберите, как HYPER будет напоминать о себе</string>
     <string name="notifications_messages">Уведомления о сообщениях</string>
@@ -154,24 +197,21 @@
     <string name="notifications_preview_desc">Показывать текст сообщения в уведомлении</string>
     <string name="notifications_master_off">Основные уведомления выключены</string>
 
-    <!-- Privacy settings -->
     <string name="privacy_title">Приватность</string>
     <string name="privacy_subtitle">Контролируйте, что видят другие пользователи</string>
-    <string name="privacy_read_receipts">Отчёты о прочтении</string>
+    <string name="privacy_read_receipts">Отчеты о прочтении</string>
     <string name="privacy_read_receipts_desc">Собеседники видят, что вы прочитали сообщение</string>
-    <string name="privacy_last_seen">Статус «в сети»</string>
+    <string name="privacy_last_seen">Статус в сети</string>
     <string name="privacy_last_seen_desc">Показывать время последнего визита</string>
-    <string name="privacy_note">В демо-режиме настройки сохраняются только на этом устройстве. После подключения сервера они синхронизируются с аккаунтом.</string>
-    <string name="saved">Сохранено</string>
+    <string name="privacy_note">Настройки сохраняются только на этом устройстве.</string>
 
-    <!-- Themes -->
     <string name="themes_title">Темы</string>
     <string name="themes_headline">Ваш HYPER, ваш стиль</string>
     <string name="themes_subtitle">Выберите режим и акцент. Интерфейс обновится сразу.</string>
     <string name="theme_mode_label">Режим оформления</string>
     <string name="theme_system">Системная</string>
     <string name="theme_light">Светлая</string>
-    <string name="theme_dark">Тёмная</string>
+    <string name="theme_dark">Темная</string>
     <string name="theme_dynamic">Динамический цвет</string>
     <string name="theme_dynamic_desc">Подстраиваться под обои и систему</string>
     <string name="theme_dynamic_unavailable">Доступно на Android 12 и выше</string>
@@ -186,68 +226,4 @@
     <string name="theme_preview_time">12:40</string>
     <string name="theme_preview_badge">Material You 3</string>
     <string name="theme_dynamic_active_note">Динамический цвет использует палитру системы и имеет приоритет над акцентом.</string>
-
-    <!-- QR authorization -->
-    <string name="qr_title">Вход по QR-коду</string>
-    <string name="qr_headline">Быстрый вход без пароля</string>
-    <string name="qr_subtitle">Откройте страницу входа HYPER на компьютере и отсканируйте QR-код камерой телефона.</string>
-    <string name="qr_step_1">Откройте web.hyper-messenger.ru/login на компьютере</string>
-    <string name="qr_step_2">Выберите «Войти по QR-коду»</string>
-    <string name="qr_step_3">Наведите камеру телефона на код</string>
-    <string name="qr_scan_hint">Наведите камеру на QR-код</string>
-    <string name="qr_scanning">Сканируем QR-код…</string>
-    <string name="qr_simulate">Смоделировать сканирование</string>
-    <string name="qr_open_page">Открыть страницу входа</string>
-    <string name="qr_note">Сканер камеры будет подключён вместе с сервером. Пока можно посмотреть демо-результат.</string>
-    <string name="qr_success_title">Вход подтверждён!</string>
-    <string name="qr_success_desc">Компьютер получил доступ к вашему аккаунту HYPER. Можно продолжать работу.</string>
-    <string name="qr_done">Готово</string>
-    <string name="qr_again">Сканировать ещё раз</string>
-    <string name="qr_demo_step">Демонстрационный шаг · без камеры</string>
-
-    <!-- Profile -->
-    <string name="profile_title">Профиль</string>
-    <string name="profile_demo_badge">Демо-профиль</string>
-    <string name="profile_status_default">На связи в HYPER</string>
-    <string name="profile_edit">Редактировать профиль</string>
-    <string name="profile_stat_chats">Чаты</string>
-    <string name="profile_stat_media">Медиа</string>
-    <string name="profile_stat_days">Дней в HYPER</string>
-    <string name="profile_account">Данные аккаунта</string>
-    <string name="profile_email">Эл. почта</string>
-    <string name="profile_username">Имя пользователя</string>
-    <string name="profile_phone">Телефон</string>
-    <string name="profile_phone_value">+7 900 000-00-00</string>
-    <string name="profile_member_since">В HYPER с</string>
-    <string name="profile_member_since_value">ноября 2026</string>
-    <string name="profile_status_label">Статус</string>
-    <string name="profile_actions">Аккаунт</string>
-    <string name="profile_action_themes">Оформление</string>
-    <string name="profile_action_themes_desc">Темы, акценты и динамический цвет</string>
-    <string name="profile_action_qr">Вход по QR-коду</string>
-    <string name="profile_action_qr_desc">Подтвердить новое устройство</string>
-    <string name="profile_action_security">Безопасность</string>
-    <string name="profile_action_security_desc">Пароль, 2FA и активные сеансы</string>
-    <string name="profile_logout">Выйти</string>
-    <string name="profile_demo_note">Демо-профиль · изменения хранятся на этом устройстве</string>
-    <string name="edit_profile_title">Редактировать профиль</string>
-    <string name="edit_profile_headline">Как вас будут видеть</string>
-    <string name="edit_profile_name">Ваше имя</string>
-    <string name="edit_profile_status">Статус</string>
-    <string name="edit_profile_email_readonly">Почту можно изменить в настройках на сайте</string>
-    <string name="edit_profile_save">Сохранить изменения</string>
-    <string name="edit_profile_name_empty">Имя не может быть пустым</string>
-    <string name="edit_profile_saved">Профиль обновлён</string>
-    <string name="edit_profile_status_hint">Например: «На связи в HYPER»</string>
-    <string name="edit_profile_photo">Сменить фото</string>
-    <string name="edit_profile_photo_soon">Загрузка фото появится после подключения сервера</string>
-
-    <!-- New chat sheet -->
-    <string name="contacts_title">Контакты</string>
-    <string name="new_chat_soon">Создание нового диалога с сервером</string>
-    <string name="profile_security_twofa">Двухфакторная защита</string>
-    <string name="profile_security_twofa_desc">Аккаунты с 2FA защищены дополнительным кодом</string>
-    <string name="profile_language">Язык</string>
-    <string name="profile_language_value">Русский</string>
-    <string name="app_language_section">Приложение</string>
 </resources>

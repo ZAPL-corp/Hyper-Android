@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; background: #050b18; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #eef4ff; }
+  .card {
+    position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    padding: 90px 84px 76px; display: flex; flex-direction: column;
+    background:
+      radial-gradient(900px 700px at 85% 8%, rgba(25,195,255,.20), transparent 60%),
+      radial-gradient(800px 800px at 0% 95%, rgba(10,132,255,.18), transparent 60%),
+      linear-gradient(160deg, #071121 0%, #0a1c33 45%, #04101f 100%);
+    border-bottom: 2px solid rgba(255,255,255,.06);
+  }
+  .orb { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .55; }
+  .orb.a { width: 520px; height: 520px; right: -180px; top: 420px;
+    background: radial-gradient(circle, rgba(25,195,255,.22), transparent 68%); }
+  .orb.b { width: 620px; height: 620px; left: -260px; bottom: -120px;
+    background: radial-gradient(circle, rgba(10,132,255,.18), transparent 70%); }
+  .brand { display: flex; align-items: center; gap: 24px; font-size: 32px; letter-spacing: 9px; font-weight: 700; }
+  .brand img { width: 104px; height: 104px; border-radius: 28px; box-shadow: 0 18px 50px rgba(10,132,255,.35); }
+  .brand span { color: #f2f8ff; }
+  .tag {
+    margin-top: 128px; align-self: flex-start; font-size: 26px; font-weight: 700; letter-spacing: 5px;
+    color: #7fe0ff; background: rgba(25,195,255,.10); border: 1px solid rgba(25,195,255,.30);
+    padding: 16px 28px; border-radius: 999px;
+  }
+  h1 { margin-top: 34px; font-size: 94px; line-height: 1.02; letter-spacing: -2px; font-weight: 800; }
+  h1 em { font-style: normal; color: #62d6ff; }
+  .sub { margin-top: 26px; font-size: 34px; line-height: 1.35; color: #a9bdd8; max-width: 880px; }
+  .list { margin-top: 62px; display: flex; flex-direction: column; gap: 24px; }
+  .item {
+    display: flex; align-items: center; gap: 26px; padding: 28px 32px;
+    background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.11);
+    border-radius: 26px; font-size: 33px; font-weight: 500; color: #e7f0fb;
+  }
+  .num {
+    flex: 0 0 66px; width: 66px; height: 66px; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 800; color: #04101f;
+    background: linear-gradient(135deg, #7fe0ff, #0a84ff);
+  }
+  .note {
+    margin-top: 40px; padding: 26px 30px; border-radius: 22px; font-size: 25px; line-height: 1.4;
+    color: #9fb4cf; background: rgba(255,255,255,.04); border-left: 5px solid #0a84ff;
+  }
+  .footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-size: 26px; color: #7891ae; letter-spacing: .5px; }
+  .footer b { color: #b9cbe0; font-weight: 600; }
+  .bigmark { position: absolute; right: 52px; top: 1180px; font-size: 440px; font-weight: 800;
+    color: rgba(255,255,255,.025); letter-spacing: -30px; line-height: 1; }
+</style>
+</head>
+<body>
+
+<section class="card">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="brand"><img src="hyper.png"><span>HYPER</span></div>
+  <div class="tag">БЕЗОПАСНОСТЬ</div>
+  <h1>Аккаунт<br><em>под защитой</em></h1>
+  <div class="sub">Вход, пароли и доставка сообщений защищены на нескольких уровнях.</div>
+  <div class="list">
+    <div class="item"><div class="num">01</div>Вход по коду из письма</div>
+    <div class="item"><div class="num">02</div>Двухфакторная защита 2FA</div>
+    <div class="item"><div class="num">03</div>Пароли в виде bcrypt-хэшей</div>
+    <div class="item"><div class="num">04</div>Соединение по HTTPS</div>
+  </div>
+  <div class="note">Защита регулярно улучшается, но не является абсолютной. Сквозного шифрования пока нет: не отправляйте коды, пароли и платежные данные.</div>
+  <div class="footer"><b>HYPER Messenger</b><span>Android 11+</span></div>
+</section>
+
+<section class="card">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="brand"><img src="hyper.png"><span>HYPER</span></div>
+  <div class="tag">ОБЩЕНИЕ</div>
+  <h1>Чаты, группы<br><em>и поиск</em></h1>
+  <div class="sub">Все разговоры в одном месте, с быстрым поиском и понятным интерфейсом.</div>
+  <div class="list">
+    <div class="item"><div class="num">01</div>Личные чаты и группы</div>
+    <div class="item"><div class="num">02</div>Поиск по @username</div>
+    <div class="item"><div class="num">03</div>Фото и файлы в чате</div>
+    <div class="item"><div class="num">04</div>Темы и до 3 аккаунтов</div>
+  </div>
+  <div class="note">Найдите собеседника по нику, даже если его нет в списке друзей. История и настройки сохраняются на устройстве.</div>
+  <div class="footer"><b>HYPER Messenger</b><span>hyper-messenger.ru</span></div>
+</section>
+
+<section class="card">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="bigmark">H</div>
+  <div class="brand"><img src="hyper.png"><span>HYPER</span></div>
+  <div class="tag">ANDROID 11+</div>
+  <h1>Оставайтесь<br><em>на связи</em></h1>
+  <div class="sub">Мессенджер, который работает на большинстве современных устройств.</div>
+  <div class="list">
+    <div class="item"><div class="num">01</div>Офлайн-очередь сообщений</div>
+    <div class="item"><div class="num">02</div>Кэш последних чатов</div>
+    <div class="item"><div class="num">03</div>Светлая и темная темы</div>
+    <div class="item"><div class="num">04</div>Уведомления о сообщениях</div>
+  </div>
+  <div class="note">Сообщение, написанное без сети, отправится автоматически, когда связь восстановится.</div>
+  <div class="footer"><b>HYPER Messenger</b><span>1.1.0 concept 5</span></div>
+</section>
+
+</body>
+</html>

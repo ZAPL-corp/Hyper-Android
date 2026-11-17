@@ -9,20 +9,23 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Devices
+import androidx.compose.material.icons.rounded.Dns
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Language
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Logout
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.Palette
-import androidx.compose.material.icons.rounded.QrCode2
+import androidx.compose.material.icons.rounded.Security
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -43,9 +46,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.hyper.messenger.BuildConfig
 import ru.hyper.messenger.R
-import ru.hyper.messenger.data.DemoData
+import ru.hyper.messenger.core.ServerHost
 import ru.hyper.messenger.ui.LocalAppContainer
-import ru.hyper.messenger.ui.components.DemoBadge
 import ru.hyper.messenger.ui.components.HyperAvatar
 import ru.hyper.messenger.ui.components.HyperLogo
 import ru.hyper.messenger.ui.components.SectionTitle
@@ -59,303 +61,192 @@ fun SettingsScreen(
     onOpenThemes: () -> Unit,
     onOpenNotifications: () -> Unit,
     onOpenPrivacy: () -> Unit,
-    onOpenQr: () -> Unit,
+    onOpenSecurity: () -> Unit,
     onOpenWebSettings: () -> Unit,
 ) {
     val container = LocalAppContainer.current
-    val currentUser by container.auth.user.collectAsStateWithLifecycle()
-    val user = currentUser ?: DemoData.demoUser
-    var showLogoutDialog by rememberSaveable { mutableStateOf(false) }
-    var showAboutDialog by rememberSaveable { mutableStateOf(false) }
+    val user by container.auth.user.collectAsStateWithLifecycle()
+    val serverHost by container.preferences.serverHost.collectAsStateWithLifecycle()
+    val account = user ?: return
+    var showAbout by rememberSaveable { mutableStateOf(false) }
+    var showServer by rememberSaveable { mutableStateOf(false) }
+    var showLogout by rememberSaveable { mutableStateOf(false) }
 
     LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding(),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(
-            start = 20.dp,
-            end = 20.dp,
-            top = 14.dp,
-            bottom = 28.dp,
-        ),
+        Modifier.fillMaxSize().statusBarsPadding(),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(20.dp, 14.dp, 20.dp, 28.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        item(key = "header") {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.settings_title),
-                        style = MaterialTheme.typography.headlineLarge,
-                        fontWeight = FontWeight.ExtraBold,
-                    )
-                    Text(
-                        text = stringResource(R.string.settings_subtitle),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+        item {
+            Row(Modifier.fillMaxWidth().padding(bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(stringResource(R.string.settings_title), style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.ExtraBold)
+                    Text(stringResource(R.string.settings_subtitle), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
                 HyperLogo(size = 42.dp)
             }
         }
-
-        item(key = "mini-profile") {
+        item {
             Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(onClick = onOpenProfile),
+                Modifier.fillMaxWidth().clickable(onClick = onOpenProfile),
                 shape = MaterialTheme.shapes.extraLarge,
                 color = MaterialTheme.colorScheme.primaryContainer,
             ) {
-                Row(
-                    modifier = Modifier.padding(18.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    HyperAvatar(name = user.displayName, size = 58.dp)
+                Row(Modifier.padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
+                    HyperAvatar(account.displayName, size = 58.dp, imageUrl = account.customAvatar.takeIf { it.isNotBlank() })
                     Spacer(Modifier.width(14.dp))
-                    Column(modifier = Modifier.weight(1f)) {
+                    Column(Modifier.weight(1f)) {
                         Text(
-                            text = user.displayName,
+                            account.displayName,
                             style = MaterialTheme.typography.titleLarge,
                             color = MaterialTheme.colorScheme.onPrimaryContainer,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )
                         Text(
-                            text = user.username,
+                            account.username,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.72f),
                         )
-                        if (user.isDemo) {
-                            Spacer(Modifier.height(6.dp))
-                            DemoBadge(text = stringResource(R.string.settings_demo_badge))
-                        }
                     }
-                    Icon(
-                        imageVector = Icons.Rounded.ChevronRight,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
-                    )
+                    Icon(Icons.Rounded.ChevronRight, contentDescription = null, tint = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f))
                 }
             }
         }
-
-        item(key = "appearance-title") {
-            SectionTitle(
-                text = stringResource(R.string.settings_section_appearance),
-                modifier = Modifier.padding(top = 8.dp),
-            )
-        }
-
-        item(key = "appearance-group") {
+        item { SectionTitle(stringResource(R.string.settings_section_appearance)) }
+        item {
             SettingsGroup {
-                SettingsRow(
-                    icon = Icons.Rounded.Palette,
-                    title = stringResource(R.string.settings_themes),
-                    subtitle = stringResource(R.string.settings_themes_desc),
-                    onClick = onOpenThemes,
-                )
+                SettingsRow(Icons.Rounded.Palette, stringResource(R.string.settings_themes), subtitle = stringResource(R.string.settings_themes_desc), onClick = onOpenThemes)
                 SettingsDivider()
-                SettingsRow(
-                    icon = Icons.Rounded.Notifications,
-                    title = stringResource(R.string.settings_notifications),
-                    subtitle = stringResource(R.string.settings_notifications_desc),
-                    onClick = onOpenNotifications,
-                )
+                SettingsRow(Icons.Rounded.Notifications, stringResource(R.string.settings_notifications), subtitle = stringResource(R.string.settings_notifications_desc), onClick = onOpenNotifications)
                 SettingsDivider()
-                SettingsRow(
-                    icon = Icons.Rounded.Lock,
-                    title = stringResource(R.string.settings_privacy),
-                    subtitle = stringResource(R.string.settings_privacy_desc),
-                    onClick = onOpenPrivacy,
-                )
+                SettingsRow(Icons.Rounded.Lock, stringResource(R.string.settings_privacy), subtitle = stringResource(R.string.settings_privacy_desc), onClick = onOpenPrivacy)
             }
         }
-
-        item(key = "security-title") {
-            SectionTitle(
-                text = stringResource(R.string.settings_section_security),
-                modifier = Modifier.padding(top = 8.dp),
-            )
+        item { SectionTitle(stringResource(R.string.settings_section_security)) }
+        item {
+            SettingsGroup {
+                SettingsRow(Icons.Rounded.Security, stringResource(R.string.settings_security), subtitle = stringResource(R.string.settings_security_desc), onClick = onOpenSecurity)
+            }
         }
-
-        item(key = "security-group") {
+        item { SectionTitle(stringResource(R.string.settings_section_account)) }
+        item {
             SettingsGroup {
                 SettingsRow(
-                    icon = Icons.Rounded.QrCode2,
-                    title = stringResource(R.string.settings_qr),
-                    subtitle = stringResource(R.string.settings_qr_desc),
-                    onClick = onOpenQr,
-                )
-                SettingsDivider()
-                SettingsRow(
-                    icon = Icons.Rounded.Devices,
-                    title = stringResource(R.string.settings_devices),
-                    subtitle = null,
-                    onClick = null,
+                    Icons.Rounded.Dns, stringResource(R.string.settings_server),
+                    subtitle = stringResource(R.string.settings_server_desc),
+                    onClick = { showServer = true },
                     trailing = {
-                        Text(
-                            text = stringResource(R.string.settings_devices_value),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
+                        Text(serverHost.host, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                     },
                 )
+                SettingsDivider()
+                SettingsRow(Icons.Rounded.Language, stringResource(R.string.settings_web), subtitle = stringResource(R.string.settings_web_desc), onClick = onOpenWebSettings)
             }
         }
-
-        item(key = "account-title") {
-            SectionTitle(
-                text = stringResource(R.string.settings_section_account),
-                modifier = Modifier.padding(top = 8.dp),
-            )
-        }
-
-        item(key = "account-group") {
+        item { SectionTitle(stringResource(R.string.settings_section_about)) }
+        item {
             SettingsGroup {
+                SettingsRow(Icons.Rounded.Info, stringResource(R.string.settings_about), subtitle = stringResource(R.string.settings_about_desc), onClick = { showAbout = true })
+                SettingsDivider()
                 SettingsRow(
-                    icon = Icons.Rounded.Language,
-                    title = stringResource(R.string.settings_web),
-                    subtitle = stringResource(R.string.settings_web_desc),
-                    onClick = onOpenWebSettings,
+                    Icons.Rounded.Info, stringResource(R.string.settings_version),
+                    onClick = null,
+                    trailing = { Text("v${BuildConfig.VERSION_NAME}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) },
                 )
                 SettingsDivider()
                 SettingsRow(
-                    icon = Icons.Rounded.Language,
-                    title = stringResource(R.string.profile_language),
-                    subtitle = null,
+                    Icons.Rounded.Devices, stringResource(R.string.settings_min_android),
                     onClick = null,
-                    trailing = {
-                        Text(
-                            text = stringResource(R.string.profile_language_value),
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    },
+                    trailing = { Text(stringResource(R.string.settings_min_android_value), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) },
                 )
             }
         }
-
-        item(key = "about-title") {
-            SectionTitle(
-                text = stringResource(R.string.settings_section_about),
-                modifier = Modifier.padding(top = 8.dp),
-            )
-        }
-
-        item(key = "about-group") {
-            SettingsGroup {
-                SettingsRow(
-                    icon = Icons.Rounded.Info,
-                    title = stringResource(R.string.settings_about),
-                    subtitle = stringResource(R.string.settings_about_desc),
-                    onClick = { showAboutDialog = true },
-                )
-                SettingsDivider()
-                SettingsRow(
-                    icon = Icons.Rounded.Info,
-                    title = stringResource(R.string.settings_version),
-                    subtitle = null,
-                    onClick = null,
-                    trailing = {
-                        Text(
-                            text = "${BuildConfig.VERSION_NAME} · ${BuildConfig.VERSION_CODE}",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    },
-                )
-            }
-        }
-
-        item(key = "logout") {
+        item {
             Spacer(Modifier.height(4.dp))
             SettingsGroup {
                 SettingsRow(
-                    icon = Icons.Rounded.Logout,
-                    title = stringResource(R.string.settings_logout),
-                    onClick = { showLogoutDialog = true },
-                    showChevron = false,
+                    Icons.Rounded.Logout, stringResource(R.string.settings_logout),
+                    onClick = { showLogout = true }, showChevron = false,
                     iconBackground = MaterialTheme.colorScheme.errorContainer,
                     iconTint = MaterialTheme.colorScheme.onErrorContainer,
                 )
             }
         }
-
-        item(key = "footer") {
+        item {
             Text(
-                text = stringResource(R.string.settings_made_with),
+                stringResource(R.string.settings_made_with),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 14.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 14.dp),
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center,
             )
         }
     }
 
-    if (showLogoutDialog) {
+    if (showServer) {
         AlertDialog(
-            onDismissRequest = { showLogoutDialog = false },
-            icon = { Icon(Icons.Rounded.Logout, contentDescription = null) },
-            title = { Text(stringResource(R.string.logout_title)) },
-            text = { Text(stringResource(R.string.logout_message)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showLogoutDialog = false
-                        container.auth.logout()
-                    },
-                ) {
-                    Text(
-                        text = stringResource(R.string.logout_confirm),
-                        color = MaterialTheme.colorScheme.error,
-                    )
+            onDismissRequest = { showServer = false },
+            icon = { Icon(Icons.Rounded.Dns, contentDescription = null) },
+            title = { Text(stringResource(R.string.server_dialog_title)) },
+            text = {
+                Column {
+                    Text(stringResource(R.string.server_dialog_body), style = MaterialTheme.typography.bodyMedium)
+                    Spacer(Modifier.height(12.dp))
+                    ServerHost.entries.forEach { host ->
+                        val selected = host == serverHost
+                        Row(
+                            Modifier.fillMaxWidth().clickable {
+                                container.preferences.setServerHost(host)
+                                showServer = false
+                            }.padding(vertical = 10.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Column(Modifier.weight(1f)) {
+                                Text(host.title, style = MaterialTheme.typography.titleSmall)
+                                Text(host.host, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                            if (selected) Icon(Icons.Rounded.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(22.dp))
+                        }
+                    }
                 }
             },
-            dismissButton = {
-                TextButton(onClick = { showLogoutDialog = false }) {
-                    Text(stringResource(R.string.cancel))
-                }
-            },
+            confirmButton = { TextButton(onClick = { showServer = false }) { Text(stringResource(R.string.close)) } },
             shape = RoundedCornerShape(28.dp),
         )
     }
 
-    if (showAboutDialog) {
+    if (showAbout) {
         AlertDialog(
-            onDismissRequest = { showAboutDialog = false },
+            onDismissRequest = { showAbout = false },
             icon = { HyperLogo(size = 64.dp) },
-            title = {
-                Text(
-                    text = stringResource(R.string.settings_about_dialog_title),
-                    fontWeight = FontWeight.ExtraBold,
-                )
-            },
+            title = { Text(stringResource(R.string.settings_about_dialog_title), fontWeight = FontWeight.ExtraBold) },
             text = {
                 Column {
-                    Text(
-                        text = stringResource(R.string.settings_about_dialog_body),
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
+                    Text(stringResource(R.string.settings_about_dialog_body), style = MaterialTheme.typography.bodyMedium)
                     Spacer(Modifier.height(12.dp))
-                    Text(
-                        text = "v${BuildConfig.VERSION_NAME} · ${BuildConfig.VERSION_CODE}",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                    Text("v${BuildConfig.VERSION_NAME} · ${BuildConfig.VERSION_CODE}", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Spacer(Modifier.height(4.dp))
+                    Text(serverHost.baseUrl, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
                 }
             },
+            confirmButton = { TextButton(onClick = { showAbout = false }) { Text(stringResource(R.string.close)) } },
+            shape = RoundedCornerShape(28.dp),
+        )
+    }
+
+    if (showLogout) {
+        AlertDialog(
+            onDismissRequest = { showLogout = false },
+            icon = { Icon(Icons.Rounded.Logout, contentDescription = null) },
+            title = { Text(stringResource(R.string.logout_title)) },
+            text = { Text(stringResource(R.string.logout_message)) },
             confirmButton = {
-                TextButton(onClick = { showAboutDialog = false }) {
-                    Text(stringResource(R.string.close))
+                TextButton(onClick = { showLogout = false; container.auth.logout() }) {
+                    Text(stringResource(R.string.logout_confirm), color = MaterialTheme.colorScheme.error)
                 }
             },
+            dismissButton = { TextButton(onClick = { showLogout = false }) { Text(stringResource(R.string.cancel)) } },
             shape = RoundedCornerShape(28.dp),
         )
     }

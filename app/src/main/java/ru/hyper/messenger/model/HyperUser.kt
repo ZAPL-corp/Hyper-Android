@@ -7,14 +7,12 @@ data class HyperUser(
     val email: String,
     val status: String,
     val isDemo: Boolean = false,
+    val avatarColor: String = "",
+    val customAvatar: String = "",
+    val twoFactorEnabled: Boolean = false,
 ) {
     val initials: String
-        get() = displayName
-            .trim()
-            .split(Regex("\\s+"))
-            .filter { it.isNotEmpty() }
-            .take(2)
-            .map { it.first().uppercaseChar() }
-            .joinToString("")
-            .ifBlank { "H" }
+        get() = displayName.trim().split(Regex("\\s+"))
+            .filter { it.isNotEmpty() }.take(2)
+            .map { it.first().uppercaseChar() }.joinToString("").ifBlank { "H" }
 }

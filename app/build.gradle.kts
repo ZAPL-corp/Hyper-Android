@@ -12,16 +12,26 @@ android {
         applicationId = "ru.hyper.messenger"
         minSdk = 30
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0-concept"
+        versionCode = 5
+        versionName = "1.1.0 concept 5"
 
         vectorDrawables {
             useSupportLibrary = true
         }
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("../keystore/hyper-release.jks")
+            storePassword = "hyper2026release"
+            keyAlias = "hyper"
+            keyPassword = "hyper2026release"
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

@@ -33,6 +33,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
+import androidx.compose.foundation.Image
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -95,8 +102,27 @@ fun HyperAvatar(
     isGroup: Boolean = false,
     online: Boolean = false,
     seed: Int = name.hashCode(),
+    imageUrl: String? = null,
 ) {
     val gradient = avatarGradients[((seed % avatarGradients.size) + avatarGradients.size) % avatarGradients.size]
+    val remote: ImageBitmap? by produceState<ImageBitmap?>(initialValue = null, imageUrl) {
+        value = if (imageUrl.isNullOrBlank()) {
+            null
+        } else {
+            withContext(Dispatchers.IO) {
+                runCatching {
+                    if (imageUrl.startsWith("data:image")) {
+                        val bytes = android.util.Base64.decode(imageUrl.substringAfter(","), android.util.Base64.DEFAULT)
+                        android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size)?.asImageBitmap()
+                    } else {
+                        java.net.URL(imageUrl).openStream().use {
+                            android.graphics.BitmapFactory.decodeStream(it)?.asImageBitmap()
+                        }
+                    }
+                }.getOrNull()
+            }
+        }
+    }
 
     Box(modifier = modifier.size(size)) {
         Box(
@@ -107,7 +133,17 @@ fun HyperAvatar(
                 .background(Brush.linearGradient(gradient)),
             contentAlignment = Alignment.Center,
         ) {
-            if (isGroup) {
+            if (remote != null) {
+                Image(
+                    bitmap = remote!!,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(size)
+                        .clip(CircleShape),
+                )
+            } else if (isGroup) {
                 Icon(
                     imageVector = Icons.Rounded.Groups,
                     contentDescription = null,

@@ -1,0 +1,21 @@
+{
+  "permission": {
+    "read": "allow",
+    "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "bash": "allow",
+    "task": "allow",
+    "external_directory": "allow",
+    "transcribe": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "skill": "allow",
+    "computer_use": "allow",
+    "computer_use_read": "allow",
+    "bash_dangerous": "allow",
+    "file_destructive": "allow",
+    "bash_readonly": "allow"
+  }
+}

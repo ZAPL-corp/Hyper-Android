@@ -1,5 +1,8 @@
 package ru.hyper.messenger
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,26 +19,25 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val container = (application as HyperApplication).container
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            getSystemService(NotificationManager::class.java).createNotificationChannel(
+                NotificationChannel("messages", "Сообщения", NotificationManager.IMPORTANCE_HIGH),
+            )
+        }
 
+        val container = (application as HyperApplication).container
         setContent {
             val systemDark = isSystemInDarkTheme()
             val themeMode by container.preferences.themeMode.collectAsStateWithLifecycle()
             val dynamicColor by container.preferences.dynamicColor.collectAsStateWithLifecycle()
             val accentPalette by container.preferences.accentPalette.collectAsStateWithLifecycle()
-
             val darkTheme = when (themeMode) {
                 ThemeMode.SYSTEM -> systemDark
                 ThemeMode.LIGHT -> false
                 ThemeMode.DARK -> true
             }
-
-            HyperTheme(
-                darkTheme = darkTheme,
-                dynamicColor = dynamicColor,
-                accentPalette = accentPalette,
-            ) {
-                HyperRoot(container = container)
+            HyperTheme(darkTheme, dynamicColor, accentPalette) {
+                HyperRoot(container)
             }
         }
     }
